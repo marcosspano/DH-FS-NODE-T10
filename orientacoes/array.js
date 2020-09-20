@@ -59,5 +59,12 @@ paises.forEach(function(umPais){
     console.log (umPais);
 });
 
+//find
+var frutas = ["Uva", "Abacaxi", "Maçã", "Cereja", "Morango", "Abacaxi"];
+var moraNoMar = frutas.find (function(fruta){
+    return fruta == "Abacaxi";
+});
+console.log (moraNoMar);
+
 
 

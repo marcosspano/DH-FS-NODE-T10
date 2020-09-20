@@ -7,3 +7,4 @@ console.log (operacaoMatematica (10, 5, somar)); //Também podendo passar o par�
 
 let meuCallBack = () => console.log ('Olá');
 setTimeout (meuCallBack, 1000);
+

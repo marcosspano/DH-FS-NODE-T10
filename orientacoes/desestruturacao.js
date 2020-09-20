@@ -11,3 +11,4 @@ let {nome, sobrenome, seriesFavoritas : series} = pessoa;
 console.log (nome);
 console.log (sobrenome);
 console.log (series);
+
