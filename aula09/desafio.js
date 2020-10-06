@@ -10,7 +10,6 @@ let mesesDeDiferenca = dataAtual.diff(dataAntiga, 'months')
 console.log("A diferenca de dias entre 15/09/2005 e 15/09/2020 é " + diasDeDiferenca + " dias.")
 console.log("A diferenca de meses entre 15/09/2005 e 15/09/2020 é " + mesesDeDiferenca + " meses.")
 
-
 let dataAntigaFNS = new Date(2005, 8, 15)
 let dataAtualFNS = new Date(2020, 8, 15)
 
@@ -19,6 +18,3 @@ let mesesDeDiferencaFNS = differenceInMonths(dataAtualFNS, dataAntigaFNS)
 
 console.log("A diferenca de dias entre 15/09/2005 e 15/09/2020 é " + diasDeDiferencaFNS + " dias.")
 console.log("A diferenca de meses entre 15/09/2005 e 15/09/2020 é " + mesesDeDiferencaFNS + " meses.")
-
-
-

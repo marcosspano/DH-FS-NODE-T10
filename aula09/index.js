@@ -27,10 +27,6 @@ app.get('/users', (req, res) => {
   res.send('Olá, você está na lista de usuários')
 })
 
-app.get('/users', (req, res) => {
-  res.send('Olá, você está na lista de usuários')
-})
-
 app.listen(3000, () => {
   console.log('servidor rodando')
 })
