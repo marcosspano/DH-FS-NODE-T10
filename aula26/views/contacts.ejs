@@ -1,10 +1,21 @@
 <%- include('./partials/head'); %>
 <%- include('./partials/header'); %>
 
-<main class="container page-min-height">
+<main class="container contact-min-height">
     <section class="mt-3" id="cards">
       <h1>Mensagens de Contato</h1>
       <p>Confira abaixo as mensagens recebidas</p>
+
+      <form action="/contato/pesquisar" method="GET">
+        <div class="row mb-4">
+          <div class="col">
+            <input type="text" class="form-control" name="word" placeholder="Pesquise por e-mail"> 
+          </div>
+          <div class="pr-3">
+            <button class="btn btn-primary">Pesquisar</button>
+          </div>
+        </div>
+      </form>
 
       <% if (typeof deleted !== "undefined") { %>
         <div class="col-md-12 alert alert-success">
@@ -74,37 +85,41 @@
       <div class="mt-3 d-flex justify-content-center">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <% if (page > 1) { %>  
+            <% 
+              let hrefPaginacao = '';
+              if(typeof word !== 'undefined'){
+                hrefPaginacao = '/contato/pesquisar?word=' + word + '&page='
+              } else {
+                hrefPaginacao = '/contato/listar?page='
+              }
+            %> 
+            <% if(page > 1){ %> 
               <li class="page-item">
-                <a class="page-link" href="/contato/listar?page=<%= page - 1 %>" aria-label="Previous">
+                <a class="page-link" href="<%= hrefPaginacao + (page - 1) %>" aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
+                </a>
+              </li>       
+            <% } else { %>
+              <li class="page-item">
+                <a class="page-link" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+            <% } %> 
+            
+            <% if(total >= 10) { %>
+              <li class="page-item">
+                <a class="page-link" href="<%= hrefPaginacao + (page + 1)%>" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
                 </a>
               </li>
             <% } else { %>
               <li class="page-item">
-                <a class="page-link" href="" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-            <% } %>
-
-            <% if (page > total) { %>
-              <li class="page-item">
-                <a class="page-link" href="" aria-label="Next">
+                <a class="page-link" aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
                 </a>
               </li>
-            <% } else { %>
-              <li class="page-item">
-                <a class="page-link" href="/contato/listar?page=<%= page + 1 %>" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            <% } %>
+            <% } %> 
           </ul>
         </nav>
       </div>
