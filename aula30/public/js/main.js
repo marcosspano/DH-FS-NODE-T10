@@ -2,8 +2,6 @@
 // verificando se o arquivo foi linkado corretamente
 // console.log('Hello World');
 
-const nodemon = require("nodemon");
-
 // pegando o que foi digitado no prompt
 // let nome = prompt('Digite seu nome abaixo');
 // console.log(nome);
@@ -45,7 +43,7 @@ const nodemon = require("nodemon");
 // , ou, caso não encontre retorna vazio.
 
 
-// Aula 2
+// Aula 2 - Eventos
 
 // rotacionando logo ao passar / retirar mouse
 let logo = document.querySelector('.logo');
@@ -84,40 +82,66 @@ for (let i = 0; i < cards.length; i++) {
   });
 }
 
-let nome = document.querySelector('#input-name');
+// Aula 3 - Formulários
+let nome = document.querySelector('#input-nome');
 let email = document.querySelector('#input-email');
 let mensagem = document.querySelector('#textarea-mensagem');
 let camposFormulario = document.querySelector('form').elements;
 let form = document.querySelector('#form-contato');
-let invalidFeedbacks = document.querySelectorAll('invalid-feedback');
+let invalidFeedbacks = document.querySelectorAll('.invalid-feedback');
+
+// Desafio - ao receber foco nos campos, o campo deve ter seu background-color mudado,
+// para indicar ao usuário qual o campo ele está no momento.
+// nome.addEventListener('focus', function(){
+//   this.style.backgroundColor = '#eee'
+// });
+
+// nome.addEventListener('blur', function(){
+//   this.style.backgroundColor = '#fff'
+// });
+
+// email.addEventListener('focus', function(){
+//   this.style.backgroundColor = '#eee'
+// });
+
+// email.addEventListener('blur', function(){
+//   this.style.backgroundColor = '#fff'
+// });
+
+// mensagem.addEventListener('focus', function(){
+//   this.style.backgroundColor = '#eee'
+// });
+
+// mensagem.addEventListener('blur', function(){
+//   this.style.backgroundColor = '#fff'
+// });
 
 for (let i = 0; i < camposFormulario.length; i++) {
-  camposFormulario[i].addEventListener ('focus', function () {
-    this.style.backgroundColor = '#EEE';
+  camposFormulario[i].addEventListener('focus', function(){
+    this.style.backgroundColor = '#eee';
   });
 
-  camposFormulario[i].addEventListener ('blur', function () {
-    this.style.backgroundColor = '#FFF';
+  camposFormulario[i].addEventListener('blur', function(){
+    this.style.backgroundColor = '#fff';
   });
-
 }
 
-form.addEventListener('submit', function (event) {
+form.addEventListener('submit', function(event){
+  // previnindo comportamento default - atualizacao da pagina
   event.preventDefault();
 
-  if (nome.value === '') {
-    nome.classList.add ('is-invalid');
+  if(nome.value === ''){
+    nome.classList.add('is-invalid');
     invalidFeedbacks[0].innerHTML = 'Nome obrigatório';
   }
 
-  if (email.value === '') {
-    email.classList.add ('is-invalid');
+  if(email.value === ''){
+    email.classList.add('is-invalid');
     invalidFeedbacks[1].innerHTML = 'E-mail obrigatório';
   }
 
-  if (mensagem.value === '') {
-    mensagem.classList.add ('is-invalid');
+  if(mensagem.value === ''){
+    mensagem.classList.add('is-invalid');
     invalidFeedbacks[2].innerHTML = 'Mensagem obrigatória';
   }
-
 });

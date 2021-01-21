@@ -34,10 +34,11 @@ module.exports = {
   async create(req, res, next) {
     let cards = await Card.findAll();
 
-  let contact = { ...req.body };
+    let contact = { ...req.body };
+
     await Contact.create(contact);
 
-    res.render('index', { cards, added: true });
+    return res.status(200).json({ message: 'Contato registrado com sucesso' });
   }, 
 
   async edit(req, res, next) {
